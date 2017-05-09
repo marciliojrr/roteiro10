@@ -1,28 +1,70 @@
-#include "TestaValidaNumero.h"
-#include "ValorAbaixoException.h"
-#include "ValorAcimaException.h"
-#include "ValorMuitoAcimaException.h"
+#include "Conta.h"
+#include "ContaEspecial.h"
+#include "SaldoNaoDisponivelException.h"
 
-using namespace std;
-
-int main() {
-    int n;
-
-    TestaValidaNumero test;
-
-    cout << "Digite um valor: " << endl;
-    cin >> n;
-
-    try {
-        test.validaNumero(n);
+int main () {
+    string n, c;
+    double sal, s, saque;
+    int opcao = 0;
+    while (opcao != 2) {
+        cout << "Digite a opcao desejada para calcular sua area:" << endl
+        << "- Conta-Corrente [1]" << endl
+        << "- Conta Especial [2]" << endl
+        << "- SAIR           [3]" << endl
+        << endl <<
+        ">> ";
+        cin >> opcao;
+        switch(opcao) {
+        case 1:
+            cout << "Digite o nome do cliente" << endl << ">> ";
+            cin >> n;
+            cout << "Digite o salario do cliente" << endl << ">> ";
+            cin >> sal;
+            cout << "Digite a conta do cliente" << endl << ">> ";
+            cin >> c;
+            cout << "Digite o saldo atual do cliente" << endl << ">> ";
+            cin >> s;
+            cout << "Digite valor do saque desejado" << endl << ">>: "
+            cin >> saque;
+            try {
+                cliente.SaldoNaoDisponivelException(saque);
+            }
+            catch (runtime_error &re) {
+                cout << "Ocorreu um erro: Saldo Insuficiente";
+            }
+            break;
+        case 2:
+            cout << "Digite o nome do cliente" << endl << ">> ";
+            cin >> n;
+            cout << "Digite o salario do cliente" << endl << ">> ";
+            cin >> sal;
+            cout << "Digite a conta do cliente" << endl << ">> ";
+            cin >> c;
+            cout << "Digite o saldo atual do cliente" << endl << ">> ";
+            cin >> s;
+            break;
+        case 3:
+            cout << "ADEUS" << endl << endl;
+            break;
+        }
+    if (opcao == 1) {
+        Conta cliente (n, sal, c, s);
+        cout << "Cliente: " << cliente.getNome() <<
+        endl << "Salario Mensal: " << cliente.getSalario() <<
+        endl << "Conta-Corrente: " << cliente.getConta() <<
+        endl << "Saldo atual: " << cliente.getSaldo() <<
+        endl << "Limite Cheque-Especial: " << cliente.getLimite() << endl << endl << endl;
     }
-    catch (ValorAbaixoException &ex) {
-        cout << ex.msg() << endl;
+    if (opcao == 2) {
+        ContaEspecial cliente (n, sal, c, s);
+        cout << "Cliente: " << cliente.getNome() <<
+        endl << "Salario Mensal: " << cliente.getSalario() <<
+        endl << "Conta-Corrente: " << cliente.getConta() <<
+        endl << "Saldo atual: " << cliente.getSaldo() <<
+        endl << "Limite Cheque-Especial: " << cliente.getLimite() << endl << endl << endl;
     }
-    catch (ValorAcimaException &ex) {
-        cout << ex.msg() << endl;
+    if (opcao == 3) {
+        return 0;
     }
-    catch (ValorMuitoAcimaException &ex) {
-        cout << ex.msg() << endl;
     }
 }
