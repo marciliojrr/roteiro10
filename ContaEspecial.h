@@ -3,11 +3,8 @@
 #include "Conta.h"
 
 class ContaEspecial : public Conta {
-
 public:
-    //Conta (string n, double sal, string c, double s);
-    ContaEspecial (string n, double sal, string c, double s);
+    ContaEspecial(string, double, double, double);
     void definirLimite();
 };
-
 #endif // CONTAESPECIAL_H_INCLUDED

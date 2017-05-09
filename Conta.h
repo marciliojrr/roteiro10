@@ -1,30 +1,28 @@
 #ifndef CONTA_H_INCLUDED
 #define CONTA_H_INCLUDED
-#include "Iconta.h"
-#include "SaldoNaoDisponivelException.h"
 #include <string>
+#include "IConta.h"
+#include "saldoexception.h"
 
-class Conta : public Iconta {
-
+class Conta : public IConta {
 private:
-    string nome, conta;
-    double salario, saldo, limite;
-
+    std::string nomeCliente;
+    double salarioMensal,
+                saldo,
+                numeroConta,
+                limite;
 public:
-    Conta() {};
-    Conta (string n, double sal, string c, double s);
-    virtual void sacar ();
-    virtual void depositar ();
-    void setNome(string n);
-    void setConta(string c);
-    void setSalario(double sal);
-    void setSaldo(double s);
-    void setLimite(double l);
-    void definirLimite();
-    string getNome();
-    string getConta();
-    double getSalario();
+    Conta(string, double, double, double);
+    void setSalarioMensal(double);
+    double getSalarioMensal();
+    void setSaldo(double);
     double getSaldo();
+    void setNumeroConta(double);
+    double getNumeroConta();
+    virtual void definirLimite();
+    void setLimite(double);
     double getLimite();
+    void sacar(double);
+    void depositar(double);
 };
 #endif // CONTA_H_INCLUDED

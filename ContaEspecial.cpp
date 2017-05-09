@@ -1,13 +1,9 @@
 #include "ContaEspecial.h"
 
-ContaEspecial::ContaEspecial (string n, double sal, string c, double s){
-    setNome(n);
-    setSalario(sal);
-    setConta(c);
-    setSaldo(s);
-    definirLimite();
-    cout << "***CONTA ESPECIAL***" << endl << endl;
+void ContaEspecial::definirLimite(){
+ setLimite(3 * getSalarioMensal());
 }
-void ContaEspecial::definirLimite() {
-    setLimite(getSalario()*3);
-    }
+
+ContaEspecial::ContaEspecial(string nome, double salario, double numero, double saldo) : Conta(nome, salario, numero, saldo){
+    definirLimite();
+}
